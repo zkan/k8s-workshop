@@ -1,0 +1,14 @@
+# curl nginx-service-another
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-demo
+  labels:
+    app: nginx-test-main
+spec:
+  containers:
+    - name: nginx-demo
+      image: nginx
+      ports:
+        - containerPort: 80
