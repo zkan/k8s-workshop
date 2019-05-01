@@ -1,0 +1,15 @@
+# http://127.0.0.1:8001/api/v1/namespaces/default/pods/
+# http://127.0.0.1:8001/api/v1/namespaces/default/pods/nginx-demo/proxy/
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-demo
+  labels:
+    app: nginx-test
+spec:
+  containers:
+    - name: nginx-demo
+      image: nginx
+      ports:
+        - containerPort: 80
