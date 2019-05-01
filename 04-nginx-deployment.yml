@@ -1,0 +1,34 @@
+# http://127.0.0.1:8001/api/v1/namespaces/default/services/
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx-test
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 32100
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-test
+  template:
+    metadata:
+      labels:
+        app: nginx-test
+    spec:
+      containers:
+        - name: nginx-pod
+          image: nginx
+          ports:
+            - containerPort: 80
